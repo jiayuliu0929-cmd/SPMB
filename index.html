@@ -250,20 +250,7 @@ initFilters();
     var vals=p.getAll(key);
     if(vals.length){document.querySelectorAll('#'+id+'-list .cs-item-cb').forEach(function(cb){if(vals.includes(cb.value))cb.checked=true;});updateLabel(id);}
   });
-  var lang=p.get('lang');
-  if(!lang){
-    var bl=(navigator.language||navigator.userLanguage||'').toLowerCase();
-    if(bl&&bl!=='zh'&&!bl.startsWith('zh-')){
-      lang=bl.split('-')[0];
-    }
-  }
-  if(lang&&lang!=='zh'&&!lang.startsWith('zh')){
-    var p2=new URLSearchParams(location.search);
-    p2.delete('lang');
-    var cleanUrl=location.protocol+'//'+location.host+location.pathname+(p2.toString()?'?'+p2.toString():'');
-    location.href='https://fanyi.baidu.com/transpage?url='+encodeURIComponent(cleanUrl)+'&type=1&query=url&from=zh&to=en&source=url';
-    return;
-  }
+
 })();
 applyFilters();
 
